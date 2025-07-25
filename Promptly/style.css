@@ -1,0 +1,476 @@
+/* Basic reset & base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f9;
+  color: #222;
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  width: 46px;
+  height: auto;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+
+/* Nav bar */
+.navbar {
+  background: #1f2937;
+  color: white;
+  padding: 0.75rem 1rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.nav-btn:hover,
+.nav-btn.active {
+  background: #3b82f6;
+}
+
+/* Container for main content */
+.container {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Headings */
+h1,
+h2,
+h3 {
+  margin-bottom: 1rem;
+}
+
+/* Textarea */
+textarea#userInput {
+  width: 100%;
+  min-height: 120px;
+  resize: vertical;
+  font-size: 1rem;
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid #ddd;
+  transition: border-color 0.3s ease;
+  font-family: inherit;
+}
+
+textarea#userInput:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background-color: #fff;
+}
+
+/* Buttons */
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-weight: 600;
+  font-size: 1rem;
+  background-color: #3b82f6;
+  color: white;
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+button:hover:not(:disabled) {
+  background-color: #2563eb;
+}
+
+button:disabled {
+  background-color: #a5b4fc;
+  cursor: not-allowed;
+}
+
+#generateBtn,
+#clearBtn {
+  margin-top: 1rem;
+  margin-right: 10px;
+}
+
+#micBtn {
+  margin-top: 1rem;
+  background-color: #ef4444;
+}
+
+#micBtn:hover {
+  background-color: #dc2626;
+}
+
+/* Loading text */
+.loading {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  color: #2563eb;
+  display: none;
+}
+
+/* Output container */
+.output {
+  margin-top: 1rem;
+  padding: 15px;
+  background: white;
+  border-radius: 8px;
+  border: 2px solid #ddd;
+  max-height: 350px;
+  overflow-y: auto;
+  font-size: 1rem;
+  white-space: pre-wrap;
+}
+
+/* History */
+.history {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  max-height: 500px;
+  overflow-y: auto;
+  border: 2px solid #ddd;
+}
+
+.history-item {
+  margin-bottom: 1rem;
+}
+
+.history-item small {
+  color: #555;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.history-content {
+  background: #f9fafb;
+  border: 1px solid #ccc;
+  padding: 0.8rem;
+  border-radius: 6px;
+  white-space: pre-wrap;
+}
+
+/* Hidden helper */
+.hidden {
+  display: none;
+}
+
+/* Option selector */
+#optionSelector {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+#optionSelector button {
+  width: 32px;
+  height: 32px;
+  font-size: 1.3rem;
+  padding: 0;
+  line-height: 1;
+  margin: 0 4px;
+  user-select: none;
+}
+
+/* Theme container */
+.theme-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+/* Button primary for theme */
+.btn-primary {
+  background-color: #2563eb;
+  padding: 10px 20px;
+  font-weight: 600;
+  border-radius: 8px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #1d4ed8;
+}
+
+/* Scrollbar for output and history */
+.output::-webkit-scrollbar,
+.history::-webkit-scrollbar {
+  width: 8px;
+}
+
+.output::-webkit-scrollbar-thumb,
+.history::-webkit-scrollbar-thumb {
+  background-color: #3b82f6;
+  border-radius: 4px;
+}
+
+/* DARK THEME */
+body.dark-theme {
+  background-color: #121212;
+  color: #ddd;
+}
+
+body.dark-theme textarea#userInput {
+  background-color: #1f2937;
+  border-color: #4b5563;
+  color: #ddd;
+}
+
+body.dark-theme textarea#userInput:focus {
+  border-color: #3b82f6;
+}
+
+body.dark-theme .navbar {
+  background: #1e293b;
+}
+
+body.dark-theme .nav-btn {
+  color: #ddd;
+}
+
+body.dark-theme .nav-btn:hover,
+body.dark-theme .nav-btn.active {
+  background-color: #2563eb;
+}
+
+body.dark-theme button {
+  background-color: #2563eb;
+  color: #fff;
+}
+
+body.dark-theme button:hover:not(:disabled) {
+  background-color: #1d4ed8;
+}
+
+body.dark-theme .loading {
+  color: #60a5fa;
+}
+
+body.dark-theme .output {
+  background-color: #1f2937;
+  border-color: #374151;
+  color: #ddd;
+}
+
+body.dark-theme .history {
+  background-color: #1f2937;
+  border-color: #374151;
+  color: #ddd;
+}
+
+body.dark-theme .history-content {
+  background-color: #111827;
+  border-color: #4b5563;
+}
+
+/* LIGHT THEME */
+body.light-theme {
+  background-color: #f4f4f9;
+  color: #222;
+}
+
+/* 7 APP THEMES */
+/* Theme 1 - Cool Blue */
+body.theme-1 {
+  --bg-color: #e0f2fe;
+  --text-color: #0369a1;
+  --btn-bg: #0284c7;
+  --btn-hover: #0369a1;
+}
+
+body.theme-1 {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+body.theme-1 button {
+  background-color: var(--btn-bg);
+  color: white;
+}
+
+body.theme-1 button:hover {
+  background-color: var(--btn-hover);
+}
+
+/* Theme 2 - Warm Sunset */
+body.theme-2 {
+  --bg-color: #fff1e6;
+  --text-color: #c2410c;
+  --btn-bg: #ea580c;
+  --btn-hover: #c2410c;
+}
+
+body.theme-2 {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+body.theme-2 button {
+  background-color: var(--btn-bg);
+  color: white;
+}
+
+body.theme-2 button:hover {
+  background-color: var(--btn-hover);
+}
+
+/* Theme 3 - Forest Green */
+body.theme-3 {
+  --bg-color: #dcfce7;
+  --text-color: #166534;
+  --btn-bg: #22c55e;
+  --btn-hover: #166534;
+}
+
+body.theme-3 {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+body.theme-3 button {
+  background-color: var(--btn-bg);
+  color: white;
+}
+
+body.theme-3 button:hover {
+  background-color: var(--btn-hover);
+}
+
+/* Theme 4 - Lavender Purple */
+body.theme-4 {
+  --bg-color: #ede9fe;
+  --text-color: #7c3aed;
+  --btn-bg: #8b5cf6;
+  --btn-hover: #7c3aed;
+}
+
+body.theme-4 {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+body.theme-4 button {
+  background-color: var(--btn-bg);
+  color: white;
+}
+
+body.theme-4 button:hover {
+  background-color: var(--btn-hover);
+}
+
+/* Theme 5 - Rose Pink */
+body.theme-5 {
+  --bg-color: #fff1f2;
+  --text-color: #be185d;
+  --btn-bg: #db2777;
+  --btn-hover: #be185d;
+}
+
+body.theme-5 {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+body.theme-5 button {
+  background-color: var(--btn-bg);
+  color: white;
+}
+
+body.theme-5 button:hover {
+  background-color: var(--btn-hover);
+}
+
+/* Theme 6 - Midnight */
+body.theme-6 {
+  --bg-color: #0f172a;
+  --text-color: #e0e7ff;
+  --btn-bg: #6366f1;
+  --btn-hover: #4f46e5;
+}
+
+body.theme-6 {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+body.theme-6 button {
+  background-color: var(--btn-bg);
+  color: white;
+}
+
+body.theme-6 button:hover {
+  background-color: var(--btn-hover);
+}
+
+/* Theme 7 - Sunny Yellow */
+body.theme-7 {
+  --bg-color: #fef3c7;
+  --text-color: #a16207;
+  --btn-bg: #ca8a04;
+  --btn-hover: #a16207;
+}
+
+body.theme-7 {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+body.theme-7 button {
+  background-color: var(--btn-bg);
+  color: white;
+}
+
+body.theme-7 button:hover {
+  background-color: var(--btn-hover);
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  textarea#userInput {
+    min-height: 100px;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  #optionSelector {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+
+

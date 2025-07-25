@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Caption Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- APP SCREEN (Hidden Initially) -->
+  <div id="app">
+    <nav class="navbar">
+      <div class="nav-left">
+        <img src="prompt.png" alt="Promptly Logo" class="logo">
+        <button id="homeBtn" class="nav-btn active">Home</button>
+        <button id="historyBtn" class="nav-btn">History</button>
+        <button id="themeBtn" class="nav-btn">Theme</button>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Home -->
+      <section id="mainScreen" class="screen">
+        <div class="container">
+          <h1>✨ Welcome to Promptly, <span id="displayUser"></span>!</h1>
+          <textarea id="userInput" placeholder="Write your idea for the post..."></textarea>
+
+            <div id="optionSelector" style="margin-bottom: 1rem;">
+            <label style="margin-right: 10px;">How many options?</label>
+            <button id="decreaseBtn">➖</button>
+            <span id="optionCountDisplay" style="margin: 0 10px; font-weight: bold;">2</span>
+            <button id="increaseBtn">➕</button>
+          </div>
+
+          <button id="generateBtn">Generate </button>
+          <button id="clearBtn">Reset</button>
+          <div class="loading" id="loading">⏳ Generating with AI...</div>
+          <div class="output" id="output"></div>
+
+          <button id="micBtn">🎙️ Speak</button>
+
+        </div>
+      </section>
+
+      <!-- History -->
+      <section id="historyScreen" class="screen hidden">
+        <div class="container">
+          <h2>📜 History</h2>
+          <div id="historyContent" class="history"></div>
+        </div>
+      </section>
+
+      <!-- Theme -->
+      <section id="themeScreen" class="screen hidden">
+        <div class="container theme-container">
+          <h2>🎨 Select Theme</h2>
+          <!-- Old toggle kept for backward compatibility -->
+          <button id="toggleThemeBtn" class="btn-primary">Switch to Dark Theme 🌙</button>
+
+          <!-- New 7-theme cycle button -->
+          <button id="cycleThemeBtn" class="btn-primary" style="margin-top: 1rem;">Cycle 7 Beautiful Themes</button>
+        </div>
+      </section>
+      
+    </main>
+  </div>
+
+  <script type="module" src="script.js"></script>
+   
+  </script>
+</body>
+</html>
+
+
+
